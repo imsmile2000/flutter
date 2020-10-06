@@ -5,16 +5,17 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final title = '동내친구';
     return MaterialApp(
-      title: '동내친구',
       theme: ThemeData(
-          primarySwatch: Colors.yellow
+          primarySwatch: Colors.amber
       ),
       home: MainPage(title: '메인 페이지'),
     );
   }
 }
-class MainPage extends StatelessWidget {
+
+  class MainPage extends StatelessWidget {
   MainPage({Key key, this.title}) : super(key:key);
 
   final String title;
@@ -27,15 +28,16 @@ class MainPage extends StatelessWidget {
             centerTitle: true,
             elevation: 0.0,
           ),
-          drawer: Drawer(
+
+    drawer: Drawer(
             child: ListView(
               children: <Widget>[
                 ListTile(
                   leading: Icon(
-                    Icons.attach_money,
+                    Icons.home,
                     color: Colors.grey[850],
                   ),
-                  title: Text('현재 진행 중인 펀딩'),
+                  title: Text('HOME'),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -48,15 +50,15 @@ class MainPage extends StatelessWidget {
                 ),
                 ListTile(
                   leading: Icon(
-                    Icons.bookmark_border,
+                    Icons.attach_money,
                     color: Colors.grey[850],
                   ),
-                  title: Text('펀딩 진행하기'),
+                  title: Text('펀딩 올리기'),
                   onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder:(context)=>PageView1()
+                            builder:(context)=>PageView2()
                         )
                     );
                    },
@@ -67,12 +69,12 @@ class MainPage extends StatelessWidget {
                     Icons.perm_identity,
                     color: Colors.grey[850],
                   ),
-                  title: Text('my 메뉴'),
+                  title: Text('MY PAGE'),
                   onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder:(context)=>PageView1()
+                            builder:(context)=>PageView3()
                         )
                     );
                   },
@@ -88,10 +90,38 @@ class MainPage extends StatelessWidget {
 class PageView1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('현재 진행중인 펀딩'),
-      )
+    final title = '현재 진행중인 펀딩';
+    return MaterialApp(
+      title: title,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: ListView(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.chevron_right),
+              title: Text('양파     (1/4)'),
+            ),
+            ListTile(
+              leading: Icon(Icons.chevron_right),
+              title: Text('계란     (3/10)'),
+            ),
+            ListTile(
+              leading: Icon(Icons.chevron_right),
+              title: Text('당근     (2/6)'),
+            ),
+            ListTile(
+              leading: Icon(Icons.chevron_right),
+              title: Text('물 2L'),
+            ),
+            ListTile(
+              leading: Icon(Icons.chevron_right),
+              title: Text('3분 카레'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
